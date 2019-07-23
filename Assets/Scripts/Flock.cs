@@ -29,7 +29,7 @@ public class Flock : MonoBehaviour {
        }
     }
 
-    void LateUpdate() {
+    void Update() {
         foreach(Agent agent in agents) {
             agent.UpdateMovement(this);
         }
@@ -45,8 +45,8 @@ public class Flock : MonoBehaviour {
         center /= (agents.Count - 1);
         cohesionVector = center - (Vector2)currentAgent.transform.position;
         // cohesionVector.Normalize();
-        return Vector2.SmoothDamp(currentAgent.transform.up, cohesionVector * cohesionWeight, ref currentAgent.dampVelocity, agentSmoothTime);
-        // return cohesionVector * cohesionWeight;
+        // return Vector2.SmoothDamp(currentAgent.transform.up, cohesionVector * cohesionWeight, ref currentAgent.dampVelocity, agentSmoothTime);
+        return cohesionVector * cohesionWeight;
     }
 
     public Vector2 CalculateSeparation(Agent currentAgent) {
@@ -65,7 +65,7 @@ public class Flock : MonoBehaviour {
             }
         }
         if (nAvoid > 0) separationVector /= nAvoid;
-        separationVector.Normalize();
+        // separationVector.Normalize();
         return separationVector * separationWeight;
     }
 
@@ -77,7 +77,7 @@ public class Flock : MonoBehaviour {
             }
         }
         alignmentVector /= (agents.Count - 1);
-        alignmentVector.Normalize();
+        // alignmentVector.Normalize();
         return alignmentVector * alignmentWeight;
     }
 }
