@@ -235,11 +235,11 @@ MonoBehaviour:
   flockCount: 20
   agentPrefab: {fileID: 4193490637236488837, guid: dadc20a1794e040a38b5d9a61a252e79,
     type: 3}
-  separationDistance: 1
+  separationDistance: 5
   instanceDensity: 0.03
   cohesionWeight: 1
   alignmentWeight: 1
-  separationWeight: 5
+  separationWeight: 1
   agentSmoothTime: 0.5
   speedMultiplier: 1
 --- !u!4 &532890862
