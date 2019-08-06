@@ -46,7 +46,7 @@ public class Flock : MonoBehaviour {
         cohesionVector = center - (Vector2)currentAgent.transform.position;
         // cohesionVector.Normalize();
         // return Vector2.SmoothDamp(currentAgent.transform.up, cohesionVector * cohesionWeight, ref currentAgent.dampVelocity, agentSmoothTime);
-        return cohesionVector * cohesionWeight;
+        return cohesionVector.normalized * cohesionWeight;
     }
 
     public Vector2 CalculateSeparation(Agent currentAgent) {
@@ -66,7 +66,7 @@ public class Flock : MonoBehaviour {
         }
         if (nAvoid > 0) separationVector /= nAvoid;
         // separationVector.Normalize();
-        return separationVector * separationWeight;
+        return separationVector.normalized * separationWeight;
     }
 
     public Vector2 CalculateAlignment(Agent currentAgent) {
@@ -78,6 +78,6 @@ public class Flock : MonoBehaviour {
         }
         alignmentVector /= (agents.Count - 1);
         // alignmentVector.Normalize();
-        return alignmentVector * alignmentWeight;
+        return alignmentVector.normalized * alignmentWeight;
     }
 }
